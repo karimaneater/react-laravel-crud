@@ -35,16 +35,23 @@ class postController extends Controller
        $post->description = $request->description;
        $post->save();
 
-       return response()->json($post);
+       return response()->json([
+            'status' => 200,
+            'message' => 'Saved Successfully',
+            'data' => $post,
+       ]);
 
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $post = Post::findOrFail($id)->toArray();
+
+        return response()->json($post);
+
     }
 
     /**
@@ -58,16 +65,33 @@ class postController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
+        $post = Post::findOrFail($id);
+
+        $post->title = $request->title;
+        $post->description = $request->description;
+        $post->save();
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'Updated Successfully',
+            'data' => $post,
+       ]);
 
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        $post->delete();
+        return response()->json([
+            'status' => 200,
+            'message' => 'Deleted Successfully',
+       ]);
     }
 }

@@ -1,5 +1,5 @@
 import Dashboard from "./pages/dashboard";
-import Post from "./pages/post";
+import Post from "./pages/Posts/post";
 
 function App() {
   return (

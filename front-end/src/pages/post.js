@@ -4,7 +4,7 @@ import { DataGrid } from "@mui/x-data-grid";
 const Post = () => {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts?_limit=10")
+    fetch("http://localhost/react-laravel-crud/back-end/public/api/home")
       .then((response) => response.json())
       .then((data) => {
         console.log(data);

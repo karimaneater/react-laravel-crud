@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
+import Button from '@mui/material/Button';
 
 const Post = () => {
   const [posts, setPosts] = useState([]);
@@ -16,6 +17,7 @@ const Post = () => {
   }, []);
 
   console.log(posts, "posts");
+  
   const columns = [
     { field: "id", headerName: "ID", width: 70 },
     { field: "title", headerName: "Title", width: 130 },
@@ -36,7 +38,11 @@ const Post = () => {
   ];
 
   return (
-    <div style={{ height: 400, width: "100%" }}>
+   <>
+      <div>
+      <Button variant="contained">Add Post</Button>
+      </div>
+       <div style={{ height: 400, width: "100%" }}>
       <DataGrid
         rows={posts}
         columns={columns}
@@ -49,6 +55,7 @@ const Post = () => {
         checkboxSelection
       />
     </div>
+    </>
   );
 };
 
